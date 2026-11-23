@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlatePilot | Budget Diet Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">✳</span> PlatePilot</a>
+    <span class="top-note">Eat smart. Spend less.</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">YOUR SMART FOOD COMPANION</p>
+        <h1>Healthy eating,<br><span>within your budget.</span></h1>
+        <p class="hero-copy">Build a balanced daily meal plan with affordable, hostel-friendly Indian food.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="plate">🥗</div><span class="float f1">🥚</span><span class="float f2">🥑</span><span class="float f3">🍌</span></div>
+    </section>
+
+    <section class="profile panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">STEP 01</p><h2>Your food profile</h2></div>
+        <span class="small-note">Set your daily preferences</span>
+      </div>
+      <form id="profileForm" class="profile-grid">
+        <label>Daily food budget (₹)
+          <input id="budget" type="number" min="50" max="1000" value="120" required>
+        </label>
+        <label>Diet preference
+          <select id="diet">
+            <option value="vegetarian">Vegetarian</option>
+            <option value="nonveg">Non-vegetarian</option>
+            <option value="vegan">Vegan</option>
+          </select>
+        </label>
+        <label>Fitness goal
+          <select id="goal">
+            <option value="muscle">Muscle gain</option>
+            <option value="weight">Weight loss</option>
+            <option value="maintain">Maintenance</option>
+          </select>
+        </label>
+        <button class="primary-btn" type="submit">Generate my plan <span>→</span></button>
+      </form>
+    </section>
+
+    <section id="results" class="results hidden">
+      <div class="section-heading result-heading">
+        <div><p class="eyebrow">STEP 02</p><h2>Your daily meal plan</h2></div>
+        <button id="saveBtn" class="outline-btn">♡ Save plan</button>
+      </div>
+
+      <div class="summary-grid">
+        <article class="summary-card budget-card">
+          <span class="summary-label">DAILY FOOD COST</span>
+          <div class="summary-value" id="totalCost">₹0</div>
+          <div class="budget-track"><div id="budgetBar"></div></div>
+          <p id="budgetMessage" class="summary-foot"></p>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">TOTAL CALORIES</span>
+          <div class="summary-value" id="totalCalories">0 <small>kcal</small></div>
+          <p class="summary-foot">Estimated daily energy</p>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">PROTEIN</span>
+          <div class="summary-value" id="totalProtein">0 <small>g</small></div>
+          <p class="summary-foot">Daily protein estimate</p>
+        </article>
+      </div>
+
+      <div class="content-grid">
+        <section class="panel meals-panel">
+          <div class="panel-title"><div><p class="eyebrow">TODAY'S MENU</p><h3>Meals picked for you</h3></div><span class="live-dot">● Under budget</span></div>
+          <div id="mealList" class="meal-list"></div>
+        </section>
+        <section class="panel chart-panel">
+          <p class="eyebrow">NUTRITION SNAPSHOT</p><h3>Your macros</h3>
+          <div class="chart-wrap"><canvas id="macroChart"></canvas></div>
+          <div class="macro-legend">
+            <span><i class="dot protein"></i> Protein <b id="proteinLegend">0g</b></span>
+            <span><i class="dot carbs"></i> Carbs <b id="carbsLegend">0g</b></span>
+            <span><i class="dot fats"></i> Fats <b id="fatsLegend">0g</b></span>
+          </div>
+          <p class="disclaimer">Nutrition and prices are sample estimates. Actual needs and local prices vary.</p>
+        </section>
+      </div>
+
+      <section class="panel grocery-panel">
+        <div class="panel-title"><div><p class="eyebrow">PLAN AHEAD</p><h3>Grocery shopping list</h3></div><span class="small-note">Estimated weekly quantities</span></div>
+        <div id="groceryList" class="grocery-list"></div>
+      </section>
+    </section>
+    <footer>Made for student life <span>✳</span> PlatePilot</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
